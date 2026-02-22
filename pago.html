@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pago | OPTING</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="mobile-container">
+        <header class="hero">
+            <nav class="navbar">
+                <div class="logo">
+                    <strong>OPTING</strong><br>
+                    <span>Ingenieros Consultores</span>
+                </div>
+                <div class="nav-icons">
+                    <a href="inscripcion.html" style="color: white; text-decoration: none;">← Volver</a>
+                </div>
+            </nav>
+            <div class="hero-content">
+                <p class="badge">PAGO MANUAL · SUBÍ TU COMPROBANTE</p>
+                <h1>ABONAR POR BILLETERA O BANCO</h1>
+                <p class="sub">Podés pagar con cualquier billetera virtual (excepto Mercado Pago) o por transferencia bancaria.</p>
+                <p id="greeting" style="margin-top:10px; font-weight: bold;"></p>
+            </div>
+        </header>
+
+        <section style="padding: 30px 20px;">
+            <div style="background-color: var(--gris-claro); padding: 20px; border-radius: 12px;">
+                <p style="font-weight: bold; margin-bottom: 10px;">ATENCIÓN:</p>
+                <p style="margin-bottom: 12px;">Se puede pagar con cualquier billetera virtual excepto Mercado Pago; también aceptamos transferencia a cuenta bancaria.</p>
+
+                <p style="font-weight: bold;">CBU:</p>
+                <p style="margin-bottom: 8px;">0000168300000021716126</p>
+
+                <p style="font-weight: bold;">Banco:</p>
+                <p style="margin-bottom: 12px;">Lemon cash</p>
+
+                <form id="payment-form">
+                    <label style="display:block; margin: 10px 0; font-weight: bold;">Subí tu comprobante (imagen o PDF)</label>
+                    <input type="file" id="comprobante" name="comprobante" accept="image/*,application/pdf" style="width:100%; margin-bottom:12px;">
+
+                    <button type="submit" class="btn-orange">Enviar comprobante</button>
+                </form>
+
+                <p id="status" style="margin-top:12px; color: var(--naranja);"></p>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <div class="copy">
+                <p>Opting · Copyright 2026</p>
+            </div>
+        </footer>
+
+    </div>
+
+    <script>
+        (function(){
+            // Si no hay nombre guardado, impedir acceso y volver a inscripción
+            const name = (localStorage.getItem('payerName') || '').trim();
+            if(!name){
+                alert('Por favor completá tus datos en la página de inscripción antes de abonar.');
+                window.location.href = 'inscripcion.html';
+            } else {
+                // Mostrar saludo breve: "Hola {nombre}, por favor abona y subí el comprobante."
+                const greeting = document.getElementById('greeting');
+                if(greeting) greeting.textContent = 'Hola ' + name + ', por favor aboná y subí el comprobante.';
+            }
+
+            document.getElementById('payment-form').addEventListener('submit', function(e){
+                e.preventDefault();
+                const file = document.getElementById('comprobante').files[0];
+                const status = document.getElementById('status');
+
+                if(!file){
+                    status.textContent = 'Seleccioná el comprobante para subir.';
+                    return;
+                }
+
+                status.textContent = 'Comprobante listo. Te enviaremos confirmación por e-mail.';
+                // Nota: sin backend no se guarda el archivo. Implementar servidor para recibir el comprobante.
+            });
+        })();
+    </script>
+</body>
+</html>

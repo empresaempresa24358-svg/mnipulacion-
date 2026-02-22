@@ -1,0 +1,412 @@
+/* =========================================
+   ESTILOS GLOBALES - DISEÑO MÓVIL
+   ========================================= */
+
+:root {
+    --naranja: #E64A08;
+    --gris-oscuro: #666668;
+    --gris-claro: #F2F2F2;
+    --blanco: #ffffff;
+    --negro: #333333;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Helvetica', Arial, sans-serif;
+    background-color: #e0e0e0; /* Fondo fuera del contenedor para simular móvil */
+    display: flex;
+    justify-content: center;
+    color: var(--negro);
+    line-height: 1.4;
+}
+
+/* Contenedor principal que limita el ancho a móvil */
+.mobile-container {
+    width: 100%;
+    max-width: 450px;
+    background-color: var(--blanco);
+    min-height: 100vh;
+    box-shadow: 0 0 20px rgba(0,0,0,0.2);
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* =========================================
+   CABECERA Y HERO (Imagen 1)
+   ========================================= */
+
+.hero {
+    position: relative;
+    overflow: hidden;
+    color: var(--blanco);
+    padding: 20px;
+    text-align: left;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("images/fondo.png");
+    background-size: cover;
+    background-position: center;
+    filter: blur(8px);
+    transform: scale(1.03);
+    z-index: 0;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45));
+    z-index: 1;
+}
+
+.hero > * {
+    position: relative;
+    z-index: 2;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.logo strong {
+    color: var(--naranja);
+    font-size: 1.4rem;
+    line-height: 1;
+}
+
+.logo span {
+    font-size: 0.8rem;
+    color: #ccc;
+}
+
+.circle-icon {
+    background-color: var(--naranja);
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+}
+
+.badge {
+    font-size: 0.7rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    line-height: 1;
+    margin: 15px 0;
+}
+
+.sub {
+    font-size: 1rem;
+    margin-bottom: 25px;
+    color: #eee;
+}
+
+/* =========================================
+   BOTONES
+   ========================================= */
+
+.btn-orange {
+    background-color: var(--naranja);
+    color: var(--blanco);
+    text-decoration: none;
+    padding: 18px 30px;
+    border-radius: 40px;
+    display: inline-block;
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+    font-size: 1.1rem;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-white {
+    background-color: var(--blanco);
+    color: var(--naranja);
+    text-decoration: none;
+    padding: 18px 30px;
+    border-radius: 40px;
+    display: inline-block;
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+    font-size: 1.1rem;
+    border: none;
+}
+
+/* =========================================
+   SECCIONES DE CONTENIDO
+   ========================================= */
+
+section {
+    padding: 40px 20px;
+}
+
+.info-icons {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    text-align: center;
+}
+
+.info-icons .item span {
+    font-size: 2.5rem;
+    color: var(--naranja);
+    display: block;
+    margin-bottom: 5px;
+}
+
+.info-icons .item p {
+    font-weight: bold;
+    font-size: 0.9rem;
+    color: var(--naranja);
+}
+
+.importance {
+    background-color: var(--gris-claro);
+    text-align: center;
+}
+
+.icon-header {
+    font-size: 3rem;
+    color: var(--naranja);
+    margin-bottom: 10px;
+}
+
+.alert-box h2 {
+    color: var(--naranja);
+    font-size: 1.6rem;
+    margin-bottom: 15px;
+}
+
+/* Pasos con imágenes redondeadas */
+.step-card {
+    margin-bottom: 50px;
+    position: relative;
+    text-align: center;
+}
+
+.placeholder-img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background-color: #ddd;
+    border-radius: 50px; /* Bordes muy redondeados como en la foto */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #888;
+    border: 2px dashed #bbb;
+}
+
+.placeholder-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50px;
+    display: block;
+}
+
+.step-num {
+    font-size: 5rem;
+    font-weight: 900;
+    color: var(--blanco);
+    margin-top: -65px;
+    position: relative;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+}
+
+/* Listas de verificación */
+.check-list {
+    list-style: none;
+    text-align: left;
+}
+
+.check-list li {
+    margin-bottom: 15px;
+    padding-left: 30px;
+    position: relative;
+    font-weight: bold;
+}
+
+.check-list li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--naranja);
+    font-size: 1.2rem;
+}
+
+/* Tarjeta de Precio Naranja */
+.pricing .orange-card {
+    background-color: var(--naranja);
+    color: var(--blanco);
+    border-radius: 20px;
+    padding: 30px 20px;
+    text-align: center;
+}
+
+.price {
+    font-size: 3.5rem;
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+.price span {
+    font-size: 1rem;
+}
+
+.white-list {
+    text-align: left;
+    list-style: none;
+    margin-bottom: 30px;
+}
+
+.white-list li {
+    margin-bottom: 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    padding-bottom: 5px;
+}
+
+/* Perfil Profesional */
+.professional {
+    text-align: left;
+}
+
+.prof-flex {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.prof-circle {
+    width: 80px;
+    height: 80px;
+    background-color: #ccc;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.prof-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+}
+
+/* =========================================
+   FORMULARIO DE INSCRIPCIÓN
+   ========================================= */
+
+.form-input {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.form-header-step {
+    display: flex;
+    gap: 15px;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.step-circle-outline {
+    border: 2px solid var(--naranja);
+    color: var(--naranja);
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+/* =========================================
+   FOOTER (Imagen 11)
+   ========================================= */
+
+.footer {
+    background-color: var(--gris-oscuro);
+    color: var(--blanco);
+    padding: 40px 20px;
+}
+
+.f-box {
+    margin-bottom: 30px;
+}
+
+.f-box h4 {
+    margin-bottom: 10px;
+    font-size: 1rem;
+}
+
+.f-box p {
+    font-size: 0.9rem;
+    color: #ddd;
+}
+
+.socials {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.socials span {
+    background-color: var(--blanco);
+    color: var(--gris-oscuro);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.copy {
+    text-align: right;
+    font-size: 0.8rem;
+    color: #bbb;
+    border-top: 1px solid #888;
+    padding-top: 20px;
+}
+
+/* =========================================
+   REGLAS PARA PANTALLAS GRANDES
+   ========================================= */
+@media (min-width: 451px) {
+    body {
+        padding: 20px 0;
+    }
+}

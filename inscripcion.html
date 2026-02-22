@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscripción | OPTING</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="mobile-container">
+        
+        <header class="hero" style="padding-bottom: 30px;">
+            <nav class="navbar">
+                <div class="logo">
+                    <strong>OPTING</strong><br>
+                    <span>Ingenieros Consultores</span>
+                </div>
+                <div class="nav-icons">
+                    <span class="circle-icon">✉</span>
+                </div>
+            </nav>
+            <div class="overlay-text" style="text-align: center; margin-top: 20px;">
+                <h1 style="font-size: 1.8rem; color: white;">¡ESTÁS A UN PASO DE ACCEDER AL CURSO!</h1>
+            </div>
+        </header>
+
+        <section class="form-section">
+            <div class="form-header-step">
+                <div class="step-circle-outline">1</div>
+                <p style="color: var(--naranja); font-weight: bold; font-size: 0.9rem;">
+                    POR FAVOR CHEQUEÁ BIEN LA INFORMACIÓN, YA QUE ALLÍ LLEGARÁN LOS PASOS A SEGUIR.
+                </p>
+            </div>
+
+            <form class="registration-form" id="registration-form">
+                <input type="text" placeholder="Nombre*" class="form-input" required id="first-name">
+                <input type="text" placeholder="Apellido*" class="form-input" required id="last-name">
+                <input type="text" placeholder="CUIL*" class="form-input" required id="cuil">
+                <input type="text" placeholder="Celular de contacto*" class="form-input" required id="phone">
+                <input type="email" placeholder="E-mail*" class="form-input" required id="user-email">
+                <input type="email" placeholder="Confirmar E-mail*" class="form-input" required id="confirm-email">
+                
+                <p style="font-size: 0.8rem; color: #777; margin-bottom: 15px;">* Datos obligatorios.</p>
+
+                <div style="background-color: var(--gris-claro); padding: 15px; border-radius: 12px; margin-bottom: 20px;">
+                    <p style="color: var(--naranja); font-weight: bold; text-align: center; font-size: 0.9rem;">
+                        SI COMPRÁS AHORA BONIFICAMOS LA GESTIÓN DE TU CARNET ANTE EL MINISTERIO
+                    </p>
+                </div>
+            </form>
+        </section>
+
+        <section class="checkout-section" style="padding-top: 0;">
+            <div class="form-header-step">
+                <div class="step-circle-outline">2</div>
+                <p style="color: var(--naranja); font-weight: bold; font-size: 0.9rem;">
+                    CUANDO EL PAGO ESTÉ CONFIRMADO RECIBIRÁS UN EMAIL CON LOS ACCESOS AL CURSO.
+                </p>
+            </div>
+
+            <div class="orange-card" style="text-align: left; background-color: var(--naranja); color: white; border-radius: 20px; padding: 25px;">
+                <h3 style="color: white; margin-top: 0;">TU INSCRIPCIÓN INCLUYE</h3>
+                <hr style="opacity: 0.3; margin: 15px 0;">
+                <ul class="white-list" style="margin-bottom: 20px;">
+                    <li>Curso 100% online - Acceso inmediato</li>
+                    <li>9 clases + examen en línea</li>
+                    <li>Carnet Oficial DIPA</li>
+                    <li>Vigencia por 3 años</li>
+                    <li>Válido para todo Argentina</li>
+                    <li>Entrega en 30 minutos</li>
+                    <li>Pago de TASA DIPA</li>
+                </ul>
+                
+                <div style="border-top: 1px solid rgba(255,255,255,0.3); padding-top: 15px;">
+                    <p style="font-size: 0.8rem; opacity: 0.9;">Producto</p>
+                    <p style="font-weight: bold; font-size: 0.9rem;">Curso de Manipulación de Alimentos + Carnet Manipulador (oficial)</p>
+                </div>
+
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px; font-size: 1.5rem; font-weight: bold;">
+                    <span>Total:</span>
+                    <span>$22.990,00</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="payment-method" style="text-align: center; padding-top: 0;">
+            <div style="background: #f9f9f9; padding: 20px; border-radius: 15px; border: 1px solid #eee;">
+                <p style="font-size: 0.9rem; margin-bottom: 15px;">Abonar con cualquier billetera virtual o por transferencia bancaria (excepto Mercado Pago).</p>
+
+                <p style="font-size: 0.75rem; color: #777; margin-bottom: 20px; text-align: left;">
+                    Tus datos personales se utilizarán para procesar tu pedido, mejorar tu experiencia en esta web y otros propósitos descritos en nuestra <a href="#" style="color: var(--naranja);">política de privacidad</a>.
+                </p>
+
+                <button class="btn-orange" id="to-payment">ABONAR</button>
+                
+                <p style="margin-top: 15px; font-size: 0.8rem; font-weight: bold;">🔒 Compra 100% segura y garantizada</p>
+            </div>
+        </section>
+
+        
+
+        <footer class="footer">
+            <div class="f-box">
+                <h4>OPTING ARGENTINA</h4>
+                <p>Berazategui, Bs. As.</p>
+                <p>info@optingsha.com.ar</p>
+            </div>
+            <div class="f-box">
+                <h4>OPTING USA</h4>
+                <p>Miami, FL</p>
+                <p>usa@optingsha.com.ar</p>
+            </div>
+            <div class="socials">
+                <span>f</span><span>ig</span><span>in</span>
+            </div>
+            <div class="copy">
+                <p>Opting · Copyright 2026</p>
+                <p>Todos los derechos reservados</p>
+            </div>
+        </footer>
+
+    </div>
+
+    <script>
+        (function(){
+            const toPayment = document.getElementById('to-payment');
+            toPayment && toPayment.addEventListener('click', function(e){
+                e.preventDefault();
+                const first = document.getElementById('first-name').value.trim();
+                const last = document.getElementById('last-name').value.trim();
+                const email = document.getElementById('user-email').value.trim();
+                const confirm = document.getElementById('confirm-email').value.trim();
+                const cuil = document.getElementById('cuil').value.trim();
+                const phone = document.getElementById('phone').value.trim();
+
+                if(!first || !last || !email || !confirm || !cuil || !phone){
+                    alert('Por favor completá todos los campos obligatorios antes de continuar.');
+                    return;
+                }
+                if(email !== confirm){
+                    alert('El e-mail y la confirmación no coinciden.');
+                    return;
+                }
+
+                // Guardar nombre y email en localStorage para la página de pago
+                const fullName = (first + ' ' + last).trim();
+                try{
+                    localStorage.setItem('payerName', fullName);
+                    localStorage.setItem('payerEmail', email);
+                }catch(err){
+                    console.warn('No se pudo guardar en localStorage', err);
+                }
+
+                // Redirigir a pago
+                window.location.href = 'pago.html';
+            });
+        })();
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
