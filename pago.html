@@ -24,6 +24,7 @@
                 <h1>ABONAR POR BILLETERA O BANCO</h1>
                 <p class="sub">Podés pagar con cualquier billetera virtual (excepto Mercado Pago) o por transferencia bancaria.</p>
                 <p id="greeting" style="margin-top:10px; font-weight: bold;"></p>
+                <p id="selected-plan" style="margin-top:6px; font-size:1.05rem; color: #fff; font-weight:700;"></p>
             </div>
         </header>
 
@@ -67,17 +68,36 @@
 
     <script>
         (function(){
-            // Si no hay nombre guardado, impedir acceso y volver a inscripción
+            // Mostrar saludo si existe nombre guardado
             const name = (localStorage.getItem('payerName') || '').trim();
-            if(!name){
-                alert('Por favor completá tus datos en la página de inscripción antes de abonar.');
-                window.location.href = 'inscripcion.html';
-            } else {
-                // Mostrar saludo breve: "Hola {nombre}, por favor abona y subí el comprobante."
-                const greeting = document.getElementById('greeting');
-                if(greeting) greeting.textContent = 'Hola ' + name + ', por favor aboná y subí el comprobante.';
+            const greeting = document.getElementById('greeting');
+            if(greeting){
+                if(name) greeting.textContent = 'Hola ' + name + ', por favor aboná y subí el comprobante.';
+                else greeting.textContent = 'Por favor completá tus datos en la página de inscripción antes de abonar.';
             }
 
+            // Leer plan desde la query string y mostrar precio/nota
+            const params = new URLSearchParams(window.location.search);
+            const plan = (params.get('plan') || '').toLowerCase();
+            const selected = document.getElementById('selected-plan');
+            const planMap = {
+                full: {label: 'Plan full — Carnet oficial', price: '$21.000', note: 'Entrega en 30 minutos · Incluye triple choice'},
+                basic: {label: 'Plan económico — Sin triple choice', price: '$12.050', note: 'Entrega en aproximadamente 1 hora'},
+                express: {label: 'Plan express — Sin pruebas', price: '$27.030', note: 'Entrega en 5 minutos'}
+            };
+
+            if(selected){
+                const info = planMap[plan] || null;
+                if(info){
+                    selected.textContent = info.label + ' — ' + info.price + ' · ' + info.note;
+                } else {
+                    selected.textContent = 'Seleccioná un plan en la página anterior para ver el precio aquí.';
+                }
+            }
+
+            // (CONTINUAR eliminado) La navegación ahora es: index -> inscripcion -> pago
+
+            // Manejo básico del formulario (sin backend)
             document.getElementById('payment-form').addEventListener('submit', function(e){
                 e.preventDefault();
                 const file = document.getElementById('comprobante').files[0];
@@ -91,6 +111,13 @@
                 status.textContent = 'Comprobante listo. Te enviaremos confirmación por e-mail.';
                 // Nota: sin backend no se guarda el archivo. Implementar servidor para recibir el comprobante.
             });
+
+            // Si no hay nombre guardado, sugerir ir a inscripción (no redirigir automáticamente)
+            if(!name){
+                const status = document.getElementById('status');
+                if(status) status.textContent = 'No se encontraron datos de inscripción. Completa tus datos en la página de inscripción.';
+            }
+
         })();
     </script>
 </body>

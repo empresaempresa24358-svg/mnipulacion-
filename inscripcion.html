@@ -60,7 +60,7 @@
             </div>
 
             <div class="orange-card" style="text-align: left; background-color: var(--naranja); color: white; border-radius: 20px; padding: 25px;">
-                <h3 style="color: white; margin-top: 0;">TU INSCRIPCIÓN INCLUYE</h3>
+                <h3 id="inscription-title" style="color: white; margin-top: 0;">TU INSCRIPCIÓN INCLUYE</h3>
                 <hr style="opacity: 0.3; margin: 15px 0;">
                 <ul class="white-list" style="margin-bottom: 20px;">
                     <li>Curso 100% online - Acceso inmediato</li>
@@ -79,7 +79,7 @@
 
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px; font-size: 1.5rem; font-weight: bold;">
                     <span>Total:</span>
-                    <span>$22.990,00</span>
+                    <span id="inscription-total">$22.990,00</span>
                 </div>
             </div>
         </section>
@@ -124,6 +124,26 @@
 
     <script>
         (function(){
+            // Leer plan desde query string (index.html envía ?plan=...)
+            const params = new URLSearchParams(window.location.search);
+            const plan = (params.get('plan') || '').toLowerCase();
+
+            // Mapear planes a información de precio y texto
+            const planMap = {
+                full: {title: 'Curso de Manipulación de Alimentos + Carnet Manipulador (oficial)', total: '$21.000', listExtra: 'Incluye triple choice'},
+                basic: {title: 'Curso de Manipulación de Alimentos + Carnet Manipulador (económico)', total: '$12.050', listExtra: 'Preguntas sin triple choice'},
+                express: {title: 'Curso Express — Carnet sin pruebas', total: '$27.030', listExtra: 'Entrega en 5 minutos, sin pruebas'}
+            };
+
+            // Si hay plan en la URL, actualizar texto y precio visibles
+            const info = planMap[plan] || null;
+            if(info){
+                const titleEl = document.getElementById('inscription-title');
+                const totalEl = document.getElementById('inscription-total');
+                if(titleEl) titleEl.textContent = 'TU INSCRIPCIÓN: ' + info.title;
+                if(totalEl) totalEl.textContent = info.total;
+            }
+
             const toPayment = document.getElementById('to-payment');
             toPayment && toPayment.addEventListener('click', function(e){
                 e.preventDefault();
@@ -148,12 +168,14 @@
                 try{
                     localStorage.setItem('payerName', fullName);
                     localStorage.setItem('payerEmail', email);
+                    if(plan) localStorage.setItem('selectedPlan', plan);
                 }catch(err){
                     console.warn('No se pudo guardar en localStorage', err);
                 }
 
                 // Redirigir a pago
-                window.location.href = 'pago.html';
+                const target = 'pago.html' + (plan ? ('?plan=' + encodeURIComponent(plan)) : '');
+                window.location.href = target;
             });
         })();
     </script>
